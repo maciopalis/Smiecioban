@@ -11,13 +11,9 @@ public class Player {
         this.y = Levels.playerStartY;
     }
 
-    public void move() {
-        Scanner keyboard = new Scanner(System.in);
-        System.out.print("Enter move (WASD): ");
-        char move = keyboard.next().charAt(0); //.charAt(0) takes only the first character
-
+    public void move(char direction) {
         int newX = x, newY = y;
-        switch (move) { // Player movement
+        switch (direction) { // Player movement
             case 'w':
                 newY = y - 1;
                 break;
@@ -39,7 +35,7 @@ public class Player {
                 x = newX;
                 y = newY;
                 board.updatePlayerPosition(x, y);
-            } else if (!board.canMove(newX, newY)) {
+            } else if (!board.canMove(newX, newY)) {//delete this line later
                 System.out.println("Invalid move!");
             }
         }

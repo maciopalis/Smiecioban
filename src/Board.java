@@ -2,9 +2,9 @@ public class Board {
     public char[][] board;
     public int playerStartX, playerStartY;
     private int playerX, playerY;
-    private boolean onGoalbuf=false, onGoal=false;
+    private boolean onGoalbuf = false, onGoal = false;
 
-    public Board(int level) { // Load board from Levels
+    public Board(int level) {
         Levels.setLevel(level);
         this.board = Levels.currentLevel;
         this.playerStartX = Levels.playerStartX;
@@ -24,14 +24,14 @@ public class Board {
             int newBoxY = y + dy;
             return board[newBoxY][newBoxX] == ' ' || board[newBoxY][newBoxX] == 'O';
         }
-        else return board[y][x] == ' '; // true
+        else return board[y][x] == ' ';
     }
 
     public void updatePlayerPosition(int x, int y) { // Set new player position
-        if (onGoal == true && onGoalbuf == false) {
+        if (onGoal && !onGoalbuf) { //onGoal == true && onGoalbuf == false
             board[playerY][playerX] = ' ';
             onGoalbuf = true;
-        }else if (onGoal == true && onGoalbuf == true) { // On goal tweaks
+        }else if (onGoal && onGoalbuf) { // On goal tweaks
             board[playerY][playerX] = 'O';
             if (board[y][x] == 'O') {
                 onGoal = true;
@@ -60,20 +60,10 @@ public class Board {
             }
             board[y][x] = ' ';
         }
-
         playerX = x;
         playerY = y;
         board[playerY][playerX] = '@';
-        System.out.println("Player position: " + playerX + ", " + playerY); // delete this line
-    }
-
-    public void printBoard() {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                System.out.print(board[i][j]);
-            }
-            System.out.println();
-        }
+        System.out.println("Player position: " + playerX + ", " + playerY); // testing delete this line
     }
 
     public boolean isCompleted() {

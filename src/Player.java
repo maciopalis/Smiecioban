@@ -4,11 +4,13 @@ import java.util.Scanner;
 public class Player {
     private Board board;
     private int x, y;
+    private int moves;
 
     public Player(Board board) {
         this.board = board;
         this.x = Levels.playerStartX;
         this.y = Levels.playerStartY;
+        this.moves = 0;
     }
 
     public void move(char direction) {
@@ -35,9 +37,14 @@ public class Player {
                 x = newX;
                 y = newY;
                 board.updatePlayerPosition(x, y);
+                moves++;
             } else if (!board.canMove(newX, newY)) {//delete this line later
                 System.out.println("Invalid move!");
             }
         }
+
+    }
+    public int getMoves() {
+        return moves;
     }
 }

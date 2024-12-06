@@ -65,19 +65,19 @@ public class Game {
                 switch (e.getKeyChar()) {
                     case 'w':
                         player.move('w');
-                        System.out.println("w");//testing delete this
+                        //System.out.println("w");//testing delete this
                         break;
                     case 'a':
                         player.move('a');
-                        System.out.println("a");//testing delete this
+                        //System.out.println("a");//testing delete this
                         break;
                     case 's':
                         player.move('s');
-                        System.out.println("s");//testing delete this
+                        //System.out.println("s");//testing delete this
                         break;
                     case 'd':
                         player.move('d');
-                        System.out.println("d");//testing delete this
+                        //System.out.println("d");//testing delete this
                         break;
                 }
                 gamePanel.updateBoard(board);

@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330300c6-dccd-4deb-b2ed-03155f072ef3" name="Changes" comment="Graphic color tiles">
+    <list default="true" id="330300c6-dccd-4deb-b2ed-03155f072ef3" name="Changes" comment="Working bins and trash">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Levels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Levels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +99,10 @@
       <workItem from="1732447595630" duration="22429000" />
       <workItem from="1732655270480" duration="1054000" />
       <workItem from="1733247174946" duration="697000" />
-      <workItem from="1733247888286" duration="18050000" />
+      <workItem from="1733247888286" duration="18394000" />
+      <workItem from="1733352455671" duration="260000" />
+      <workItem from="1733500405346" duration="13524000" />
+      <workItem from="1733517188081" duration="2110000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <option name="closed" value="true" />
@@ -133,7 +136,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733260006306</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Graphic png v1">
+      <option name="closed" value="true" />
+      <created>1733269264833</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733269264833</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Graphic png v1">
+      <option name="closed" value="true" />
+      <created>1733269531486</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733269531486</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,7 +186,8 @@
     <MESSAGE value="Init" />
     <MESSAGE value="Cmd design" />
     <MESSAGE value="Graphic color tiles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Graphic color tiles" />
+    <MESSAGE value="Graphic png v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Graphic png v1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

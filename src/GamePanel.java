@@ -9,7 +9,9 @@ public class GamePanel extends JPanel {
     private Player player;
     private int moves;
     private int level;
-    private Image emptyTile, wallTile, playerTile, mixedTrashTile, mixedBinTile, mixedTrashInBinTile;
+    private Image emptyTile, wallTile, playerTile, mixedTrashTile, mixedBinTile, mixedTrashInBinTile,
+            glassTrashTile, glassBinTile, glassTrashInBinTile, plasticTrashTile, plasticBinTile, plasticTrashInBinTile,
+            paperTrashTile, paperBinTile, paperTrashInBinTile, bioTrashTile, bioBinTile, bioTrashInBinTile;
 
     public GamePanel(Board board, Player player) {
         this.board = board;
@@ -21,9 +23,21 @@ public class GamePanel extends JPanel {
             emptyTile = ImageIO.read(new File("graphics/background/empty.png"));
             wallTile = ImageIO.read(new File("graphics/background/wall.png"));
             playerTile = ImageIO.read(new File("graphics/garbageman/radek.png"));
-            mixedTrashTile = ImageIO.read(new File("graphics/garbage/paper_trash.png"));
-            mixedBinTile = ImageIO.read(new File("graphics/bins/empty/paper_bin_empty.png"));
-            mixedTrashInBinTile = ImageIO.read(new File("graphics/bins/full/paper_bin_full.png"));
+            mixedTrashTile = ImageIO.read(new File("graphics/garbage/mixed_trash.png"));
+            mixedBinTile = ImageIO.read(new File("graphics/bins/empty/mixed_bin_empty.png"));
+            mixedTrashInBinTile = ImageIO.read(new File("graphics/bins/full/mixed_bin_full.png"));
+            glassTrashTile = ImageIO.read(new File("graphics/garbage/glass_trash.png"));
+            glassBinTile = ImageIO.read(new File("graphics/bins/empty/glass_bin_empty.png"));
+            glassTrashInBinTile = ImageIO.read(new File("graphics/bins/full/glass_bin_full.png"));
+            plasticTrashTile = ImageIO.read(new File("graphics/garbage/plastic_trash.png"));
+            plasticBinTile = ImageIO.read(new File("graphics/bins/empty/plastic_bin_empty.png"));
+            plasticTrashInBinTile = ImageIO.read(new File("graphics/bins/full/plastic_bin_full.png"));
+            paperTrashTile = ImageIO.read(new File("graphics/garbage/paper_trash.png"));
+            paperBinTile = ImageIO.read(new File("graphics/bins/empty/paper_bin_empty.png"));
+            paperTrashInBinTile = ImageIO.read(new File("graphics/bins/full/paper_bin_full.png"));
+            bioTrashTile = ImageIO.read(new File("graphics/garbage/bio_trash.png"));
+            bioBinTile = ImageIO.read(new File("graphics/bins/empty/bio_bin_empty.png"));
+            bioTrashInBinTile = ImageIO.read(new File("graphics/bins/full/bio_bin_full.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,14 +83,50 @@ public class GamePanel extends JPanel {
                     case '@':
                         img = playerTile;
                         break;
-                    case 'X':
+                    case 'M':
                         img = mixedTrashTile;
                         break;
-                    case 'O':
+                    case 'G':
+                        img = glassTrashTile;
+                        break;
+                    case 'P':
+                        img = plasticTrashTile;
+                        break;
+                    case 'A':
+                        img = paperTrashTile;
+                        break;
+                    case 'B':
+                        img = bioTrashTile;
+                        break;
+                    case 'm':
                         img = mixedBinTile;
                         break;
-                    case 'G':
+                    case 'X':
                         img = mixedTrashInBinTile;
+                        break;
+                    case 'g':
+                        img = glassBinTile;
+                        break;
+                    case 'Y':
+                        img = glassTrashInBinTile;
+                        break;
+                    case 'p':
+                        img = plasticBinTile;
+                        break;
+                    case 'Z':
+                        img = plasticTrashInBinTile;
+                        break;
+                    case 'a':
+                        img = paperBinTile;
+                        break;
+                    case 'J':
+                        img = paperTrashInBinTile;
+                        break;
+                    case 'b':
+                        img = bioBinTile;
+                        break;
+                    case 'K':
+                        img = bioTrashInBinTile;
                         break;
                 }
                 //g.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);

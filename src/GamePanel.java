@@ -7,13 +7,12 @@ import javax.imageio.ImageIO;
 public class GamePanel extends JPanel {
     private Board board;
     private Player player;
-    private int moves;
     private int level;
     private Image emptyTile, wallTile, playerTile, mixedTrashTile, mixedBinTile, mixedTrashInBinTile,
             glassTrashTile, glassBinTile, glassTrashInBinTile, plasticTrashTile, plasticBinTile, plasticTrashInBinTile,
             paperTrashTile, paperBinTile, paperTrashInBinTile, bioTrashTile, bioBinTile, bioTrashInBinTile;
 
-    public GamePanel(Board board, Player player) {
+    public GamePanel(Board board, Player player, int level) {
         this.board = board;
         this.player = player;
         this.level = level;
@@ -38,11 +37,11 @@ public class GamePanel extends JPanel {
             bioTrashTile = ImageIO.read(new File("graphics/garbage/bio_trash.png"));
             bioBinTile = ImageIO.read(new File("graphics/bins/empty/bio_bin_empty.png"));
             bioTrashInBinTile = ImageIO.read(new File("graphics/bins/full/bio_bin_full.png"));
-        } catch (IOException e) {
+        } catch (IOException e) { //przypisywanie zmiennym plików graficznych
             e.printStackTrace();
         }
 
-        JPanel textPanel = new JPanel() {
+        JPanel textPanel = new JPanel() { //panel z informacjami
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -50,10 +49,11 @@ public class GamePanel extends JPanel {
                 g.setFont(new Font("Arial", Font.BOLD, 20));
                 g.drawString("Wykonane ruchy: " + player.getMoves(), 10, 30);
                 g.drawString("POZIOM: " + level, getWidth() - 150, 30);
-                g.drawLine(0, 40, getWidth(), 40); // Draw a line below the text
+                g.drawLine(0, 40, getWidth(), 40);
             }
         };
-        textPanel.setPreferredSize(new Dimension(640, 50)); // Adjust size as needed
+        textPanel.setPreferredSize(new Dimension(680, 50));
+        textPanel.setBackground(Color.decode("#F0F8FF"));
         add(textPanel, BorderLayout.NORTH);
 
         JPanel mapPanel = new JPanel() {
@@ -63,8 +63,8 @@ public class GamePanel extends JPanel {
                 drawBoard(g);
             }
         };
-        mapPanel.setPreferredSize(new Dimension(640, 462)); // Adjust size as needed
-        add(mapPanel, BorderLayout.CENTER); //Not centered
+        mapPanel.setPreferredSize(new Dimension(680, 560));
+        add(mapPanel);
     }
 
     private void drawBoard(Graphics g) {
@@ -72,72 +72,33 @@ public class GamePanel extends JPanel {
         for (int y = 0; y < board.board.length; y++) {
             for (int x = 0; x < board.board[y].length; x++) {
                 char tile = board.board[y][x];
-                Image img = null;
-                switch (tile) {
-                    case ' ':
-                        img = emptyTile;
-                        break;
-                    case '#':
-                        img = wallTile;
-                        break;
-                    case '@':
-                        img = playerTile;
-                        break;
-                    case 'M':
-                        img = mixedTrashTile;
-                        break;
-                    case 'G':
-                        img = glassTrashTile;
-                        break;
-                    case 'P':
-                        img = plasticTrashTile;
-                        break;
-                    case 'A':
-                        img = paperTrashTile;
-                        break;
-                    case 'B':
-                        img = bioTrashTile;
-                        break;
-                    case 'm':
-                        img = mixedBinTile;
-                        break;
-                    case 'X':
-                        img = mixedTrashInBinTile;
-                        break;
-                    case 'g':
-                        img = glassBinTile;
-                        break;
-                    case 'Y':
-                        img = glassTrashInBinTile;
-                        break;
-                    case 'p':
-                        img = plasticBinTile;
-                        break;
-                    case 'Z':
-                        img = plasticTrashInBinTile;
-                        break;
-                    case 'a':
-                        img = paperBinTile;
-                        break;
-                    case 'J':
-                        img = paperTrashInBinTile;
-                        break;
-                    case 'b':
-                        img = bioBinTile;
-                        break;
-                    case 'K':
-                        img = bioTrashInBinTile;
-                        break;
-                }
-                //g.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
-                //g.setColor(Color.GRAY);
-                //g.drawRect(x * tileSize, y * tileSize, tileSize, tileSize);
+                Image img = switch (tile) {
+                    case ' ' -> emptyTile;
+                    case '#' -> wallTile;
+                    case '@' -> playerTile;
+                    case 'M' -> mixedTrashTile;
+                    case 'G' -> glassTrashTile;
+                    case 'P' -> plasticTrashTile;
+                    case 'A' -> paperTrashTile;
+                    case 'B' -> bioTrashTile;
+                    case 'm' -> mixedBinTile;
+                    case 'X' -> mixedTrashInBinTile;
+                    case 'g' -> glassBinTile;
+                    case 'Y' -> glassTrashInBinTile;
+                    case 'p' -> plasticBinTile;
+                    case 'Z' -> plasticTrashInBinTile;
+                    case 'a' -> paperBinTile;
+                    case 'J' -> paperTrashInBinTile;
+                    case 'b' -> bioBinTile;
+                    case 'K' -> bioTrashInBinTile;
+                    default -> null;
+                };
                 if (img != null) {
                     g.drawImage(img, x * tileSize, y * tileSize, tileSize, tileSize, this);
                 }
             }
         }
-    }
+    } // rysowanie planszy
 
     public void updateBoard(Board board) {
         this.board = board;

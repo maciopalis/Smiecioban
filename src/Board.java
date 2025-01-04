@@ -5,6 +5,9 @@ public class Board {
     private boolean onGoalbuf = false;
     private char onGoal = '0';
     private char trashPushed = '0';
+    private char miTf = 'X', glTf = 'Y', plTf = 'Z', paTf = 'J', biTf = 'K';
+    private char miTe = 'm', glTe = 'g', plTe = 'p', paTe = 'a', biTe = 'b';
+    private char miT = 'M', glT = 'G', plT = 'P', paT = 'A', biT = 'B';
 
     public Board(int level) {
         Levels.setLevel(level);
@@ -16,15 +19,15 @@ public class Board {
     }
 
     public boolean canMove(int x, int y) {
-        if (board[y][x] == 'm' || board[y][x] == 'g' || board[y][x] == 'p' || board[y][x] == 'a' || board[y][x] == 'b') {
+        if (board[y][x] == miTe || board[y][x] == glTe || board[y][x] == plTe || board[y][x] == paTe || board[y][x] == biTe) {
             return true;
-        } else if (board[y][x] == 'M' || board[y][x] == 'G' || board[y][x] == 'P' || board[y][x] == 'A' || board[y][x] == 'B' ||
-                board[y][x] == 'X' || board[y][x] == 'Y' || board[y][x] == 'Z' || board[y][x] == 'J' || board[y][x] == 'K') { // Check if the player can push the box
+        } else if (board[y][x] == miT || board[y][x] == glT || board[y][x] == plT || board[y][x] == paT || board[y][x] == biT ||
+                board[y][x] == miTf || board[y][x] == glTf || board[y][x] == plTf || board[y][x] == paTf || board[y][x] == biTf) { // Check if the player can push the box
             int dx = x - playerX;
             int dy = y - playerY;
             int newBoxX = x + dx;
             int newBoxY = y + dy;
-            if (Character.toLowerCase(board[y][x]) == board[newBoxY][newBoxX]){ //zmienic wszystkie nazwy mała duza litera to ma byc smiec mała to pusty smietnik, duza to pełny
+            if (Character.toLowerCase(board[y][x]) == board[newBoxY][newBoxX]){
                 return true;
             }
             else return board[newBoxY][newBoxX] == ' ';
@@ -34,7 +37,7 @@ public class Board {
 
     public void updatePlayerPosition(int x, int y) { // Set new player position
 
-        if (board[y][x] == 'm' || board[y][x] == 'g' || board[y][x] == 'p' || board[y][x] == 'a' || board[y][x] == 'b') { //emptyBin rules
+        if (board[y][x] == miTe || board[y][x] == glTe || board[y][x] == plTe || board[y][x] == paTe || board[y][x] == biTe) { //emptyBin rules
             if (onGoal != '0' && !onGoalbuf) { //onGoal = onBin && onGoalbuf = false
                 onGoal = board[y][x];
                 board[playerY][playerX] = ' ';
@@ -60,63 +63,57 @@ public class Board {
         int dy = y - playerY;
         int newBoxX = x + dx;
         int newBoxY = y + dy;
-        if (board[y][x] == 'X' || board[y][x] == 'Y' || board[y][x] == 'Z' || board[y][x] == 'J' || board[y][x] == 'K') { // Push the box
+        if (board[y][x] == miTf || board[y][x] == glTf || board[y][x] == plTf || board[y][x] == paTf || board[y][x] == biTf) { // Push the box
             switch (board[y][x]) {
-                case 'X':
-                    //board[newBoxY][newBoxX] = 'M';
-                    trashPushed = 'M';
+                case 'X': //miTf
+                    trashPushed = miT;
                     break;
-                case 'Y':
-                    //board[newBoxY][newBoxX] = 'G';
-                    trashPushed = 'G';
+                case 'Y': //glTf
+                    trashPushed = glT;
                     break;
-                case 'Z':
-                    //board[newBoxY][newBoxX] = 'P';
-                    trashPushed = 'P';
+                case 'Z': //plTf
+                    trashPushed = plT;
                     break;
-                case 'J':
-                    //board[newBoxY][newBoxX] = 'A';
-                    trashPushed = 'A';
+                case 'J': //paTf
+                    trashPushed = paT;
                     break;
-                case 'K':
-                    //board[newBoxY][newBoxX] = 'B';
-                    trashPushed = 'B';
+                case 'K': //biTf
+                    trashPushed = biT;
                     break;
                 default:
                     System.out.println("ERROR_Board.updatePlayerPosition.1");
-                    //trashPushed = '0';s
                     break;
-                }
+            }
             board[newBoxY][newBoxX] = trashPushed;
             onGoal = Character.toLowerCase(trashPushed);
             onGoalbuf = true;
             board[y][x] = ' ';
         }
-        if (board[y][x] == 'M' || board[y][x] == 'G' || board[y][x] == 'P' || board[y][x] == 'A' || board[y][x] == 'B'){
+        if (board[y][x] == miT || board[y][x] == glT || board[y][x] == plT || board[y][x] == paT || board[y][x] == biT){
             trashPushed = board[y][x];
             switch (board[newBoxY][newBoxX]) {
-                case 'm':
-                    board[newBoxY][newBoxX] = 'X';
-                    trashPushed = 'M';
+                case 'm': //miTe
+                    board[newBoxY][newBoxX] = miTf;
+                    trashPushed = miT;
                     break;
-                case 'g':
-                    board[newBoxY][newBoxX] = 'Y';
-                    trashPushed = 'G';
+                case 'g': //glTe
+                    board[newBoxY][newBoxX] = glTf;
+                    trashPushed = glT;
                     break;
-                case 'p':
-                    board[newBoxY][newBoxX] = 'Z';
-                    trashPushed = 'P';
+                case 'p': //plTe
+                    board[newBoxY][newBoxX] = plTf;
+                    trashPushed = plT;
                     break;
-                case 'a':
-                    board[newBoxY][newBoxX] = 'J';
-                    trashPushed = 'A';
+                case 'a': //paTe
+                    board[newBoxY][newBoxX] = paTf;
+                    trashPushed = paT;
                     break;
-                case 'b':
-                    board[newBoxY][newBoxX] = 'K';
-                    trashPushed = 'B';
+                case 'b': //biTe
+                    board[newBoxY][newBoxX] = biTf;
+                    trashPushed = biT;
                     break;
                 default:
-                    System.out.println("ERROR_Board.updatePlayerPosition.2");
+                    board[newBoxY][newBoxX] = trashPushed;
                     break;
             }
         }
@@ -132,7 +129,7 @@ public class Board {
         boolean completed = true;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j] == 'm' || board[i][j] == 'g' || board[i][j] == 'p' || board[i][j] == 'a' || board[i][j] == 'b') {
+                if (board[i][j] == miTe || board[i][j] == glTe || board[i][j] == plTe || board[i][j] == paTe || board[i][j] == biTe) {
                     completed = false;
                 }
             }

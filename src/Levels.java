@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Levels {
-    private static char[][] leveltest, level1, level2, level3;
+    private static final char[][] leveltest, level1, level2, level3;
     public static char[][] currentLevel;
     public static int playerStartX, playerStartY;
 
@@ -15,17 +15,26 @@ public class Levels {
         };
         level1 = new char[][] {
                 {'#', '#', '#', '#', '#'},
-                {'#', 'O', ' ', ' ', '#'},
+                {'#', 'g', ' ', ' ', '#'},
                 {'#', ' ', '@', ' ', '#'},
                 {'#', ' ', ' ', ' ', '#'},
                 {'#', '#', '#', '#', '#'}
         };
         level2 = new char[][] {
-                {'#', '#', '#', '#', '#', '#'},
-                {'#', 'O', ' ', ' ', ' ', '#'},
-                {'#', 'O', 'X', '@', ' ', '#'},
-                {'#', ' ', ' ', ' ', ' ', '#'},
-                {'#', '#', '#', '#', '#', '#'}
+                {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
+                {'#', 'g', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'g', '#'},
+                {'#', ' ', ' ', '@', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+                {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+                {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+                {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+                {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+                {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+                {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+                {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+                {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+                {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+                {'#', 'g', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'g', '#'},
+                {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'}
         };
         level3= new char[][] {
                 {'#', '#', '#', '#', '#', '#', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
@@ -49,28 +58,36 @@ public class Levels {
     public static void setLevel(int level) {
         switch (level) {
             case 0:
-                currentLevel = leveltest;
+                currentLevel = cloneLevel(leveltest);
                 playerStartX = 3;
                 playerStartY = 4;
                 break;
             case 1:
-                currentLevel = level1;
+                currentLevel = cloneLevel(level1);
                 playerStartX = 2;
                 playerStartY = 2;
                 break;
             case 2:
-                currentLevel = level2;
+                currentLevel = cloneLevel(level2);
                 playerStartX = 3;
                 playerStartY = 2;
                 break;
             case 3:
-                currentLevel = level3;
+                currentLevel = cloneLevel(level3);
                 playerStartX = 4;
                 playerStartY = 3;
                 break;
             default:
                 System.out.println("Invalid level!");
         }
+    }
+
+    private static char[][] cloneLevel(char[][] original) {
+        char[][] clone = new char[original.length][];
+        for (int i = 0; i < original.length; i++) {
+            clone[i] = original[i].clone();
+        }
+        return clone;
     }
 }
 

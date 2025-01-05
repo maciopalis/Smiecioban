@@ -2,16 +2,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Menus extends JFrame {
-    private Game game;
+    public Game game;
     private JFrame frame;
+
 
     public Menus(JFrame frame) {
         this.frame = frame;
+        this.game = game;
         showMainMenu();
     }
 
     public void showMainMenu() {
-
         frame.getContentPane().removeAll();
         frame.setLayout(null);
 
@@ -53,7 +54,7 @@ public class Menus extends JFrame {
         frame.repaint();
     }
 
-    private void showLevelSelection() {
+    public void showLevelSelection() {
         frame.getContentPane().removeAll();
         frame.setLayout(new GridLayout(4, 1));
 
@@ -62,7 +63,7 @@ public class Menus extends JFrame {
             int level = i + 1;
             JButton levelButton = new JButton(levels[i]);
             levelButton.addActionListener(e -> {
-                new Game(level, frame); // do testow
+                this.game = new Game(level, frame);
                 dispose();
             });
             frame.add(levelButton);
@@ -118,32 +119,5 @@ public class Menus extends JFrame {
         frame.repaint();
     }
 
-    public void showPauseMenu() {
-        JDialog pauseDialog = new JDialog(frame, "Pause Menu", true);
-        pauseDialog.setLayout(new GridLayout(3, 1));
 
-        JButton restartButton = new JButton("Restart Level");
-        JButton returnButton = new JButton("Return to Level Selection");
-        JButton continueButton = new JButton("Continue");
-
-        restartButton.addActionListener(e -> {
-            game.restartLevel();
-            pauseDialog.dispose();
-        });
-
-        returnButton.addActionListener(e -> {
-            new Menus(frame);
-            pauseDialog.dispose();
-        });
-
-        continueButton.addActionListener(e -> pauseDialog.dispose());
-
-        pauseDialog.add(restartButton);
-        pauseDialog.add(returnButton);
-        pauseDialog.add(continueButton);
-
-        pauseDialog.pack();
-        pauseDialog.setLocationRelativeTo(frame);
-        pauseDialog.setVisible(true);
-    }
 }

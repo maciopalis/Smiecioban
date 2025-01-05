@@ -14,9 +14,11 @@ public class Board {
         this.board = Levels.currentLevel;
         this.playerStartX = Levels.playerStartX;
         this.playerStartY = Levels.playerStartY;
-        playerX = Levels.playerStartX;
-        playerY = Levels.playerStartY;
+        this.playerX = Levels.playerStartX;
+        this.playerY = Levels.playerStartY;
     }
+
+
 
     public boolean canMove(int x, int y) {
         if (board[y][x] == miTe || board[y][x] == glTe || board[y][x] == plTe || board[y][x] == paTe || board[y][x] == biTe) {
@@ -33,7 +35,7 @@ public class Board {
             else return board[newBoxY][newBoxX] == ' ';
         }
         else return board[y][x] == ' ';
-    }
+    } //movement restrictions
 
     public void updatePlayerPosition(int x, int y) { // Set new player position
 
@@ -123,7 +125,7 @@ public class Board {
         //System.out.println("Player position: " + playerX + ", " + playerY); // testing delete this line
         System.out.println("onGoal = " + onGoal); // testing delete this line
         System.out.println("onGoalbuf = " + onGoalbuf); // testing delete this line
-    }
+    } //movement restrictions
 
     public boolean isCompleted() {
         boolean completed = true;
@@ -138,5 +140,5 @@ public class Board {
             completed = false;
         }
         return completed;
-    }
+    } //not working yet
 }

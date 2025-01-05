@@ -68,6 +68,7 @@ public class GamePanel extends JPanel {
     }
 
     private void drawBoard(Graphics g) {
+        super.paintComponent(g); // Clear the panel before drawing the new board - delete not working
         int tileSize = 40; // Adjusted to size of future textures
         for (int y = 0; y < board.board.length; y++) {
             for (int x = 0; x < board.board[y].length; x++) {

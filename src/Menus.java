@@ -58,24 +58,219 @@ public class Menus extends JFrame {
 
     public void showLevelSelection() {
         frame.getContentPane().removeAll();
-        frame.setLayout(new GridLayout(4, 1));
+        frame.setLayout(null);
 
-        String[] levels = {"Level 1", "Level 2", "Level 3"};
-        for (int i = 0; i < levels.length; i++) {
-            int level = i + 1;
-            JButton levelButton = new JButton(levels[i]);
-            levelButton.addActionListener(e -> {
-                this.musicManager.stopSound();
-                this.game = new Game(level, frame);
-                dispose();
-            });
-            frame.add(levelButton);
-        }
+        JButton easyLevelButton = new JButton("Łatwy");
+        easyLevelButton.setBounds(90,50,500,100);
+        easyLevelButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
+        easyLevelButton.setFocusable(false);
+
+        JButton mediumLevelButton = new JButton("Średni");
+        mediumLevelButton.setBounds(90,170,500,100);
+        mediumLevelButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
+        mediumLevelButton.setFocusable(false);
+
+        JButton hardLevelButton = new JButton("Trundny");
+        hardLevelButton.setBounds(90,290,500,100);
+        hardLevelButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
+        hardLevelButton.setFocusable(false);
 
         JButton backButton = new JButton("Powrót");
+        backButton.setBounds(90,440,500,100);
+        backButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
+        backButton.setFocusable(false);
         backButton.addActionListener(e -> showMainMenu());
+
+        easyLevelButton.addActionListener(e -> showLevelsEasy());
+        mediumLevelButton.addActionListener(e -> showLevelsMedium());
+        hardLevelButton.addActionListener(e -> showLevelsHard());
+        backButton.addActionListener(e -> showMainMenu());
+
+        frame.add(easyLevelButton);
+        frame.add(mediumLevelButton);
+        frame.add(hardLevelButton);
+        frame.add(backButton);
+        //pack();
+        frame.setVisible(true);
+        frame.revalidate();
+        frame.repaint();
+    }
+
+    public void showLevelsEasy(){
+        frame.getContentPane().removeAll();
+        frame.setLayout(null);
+
+        JButton easyLevel1Button = new JButton("Poziom 1");
+        easyLevel1Button.setBounds(90,30,500,100);
+        easyLevel1Button.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
+        easyLevel1Button.setFocusable(false);
+
+        JButton easyLevel2Button = new JButton("Poziom 2");
+        easyLevel2Button.setBounds(90,140,500,100);
+        easyLevel2Button.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
+        easyLevel2Button.setFocusable(false);
+
+        JButton easyLevel3Button = new JButton("Poziom 3");
+        easyLevel3Button.setBounds(90,250,500,100);
+        easyLevel3Button.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
+        easyLevel3Button.setFocusable(false);
+
+        JButton easyLevel4Button = new JButton("Poziom 4");
+        easyLevel4Button.setBounds(90,360,500,100);
+        easyLevel4Button.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
+        easyLevel4Button.setFocusable(false);
+
+        JButton backButton = new JButton("Powrót");
+        backButton.setBounds(90,475,500,100);
+        backButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
+        backButton.setFocusable(false);
+        backButton.addActionListener(e -> showMainMenu());
+
+        easyLevel1Button.addActionListener(e -> {
+            this.game = new Game(1, frame);
+            this.musicManager.stopSound();
+        });
+        easyLevel2Button.addActionListener(e -> {
+            this.game = new Game(2, frame);
+            this.musicManager.stopSound();
+        });
+        easyLevel3Button.addActionListener(e -> {
+            this.game = new Game(3, frame);
+            this.musicManager.stopSound();
+        });
+        easyLevel4Button.addActionListener(e -> {
+            this.game = new Game(4, frame);
+            this.musicManager.stopSound();
+        });
+        backButton.addActionListener(e -> showMainMenu());
+
+        frame.add(easyLevel1Button);
+        frame.add(easyLevel2Button);
+        frame.add(easyLevel3Button);
+        frame.add(easyLevel4Button);
         frame.add(backButton);
 
+        frame.setVisible(true);
+        frame.revalidate();
+        frame.repaint();
+    }
+
+    public void showLevelsMedium(){
+        frame.getContentPane().removeAll();
+        frame.setLayout(null);
+
+        JButton mediumLevel1Button = new JButton("Poziom 1");
+        mediumLevel1Button.setBounds(90, 30, 500, 100);
+        mediumLevel1Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        mediumLevel1Button.setFocusable(false);
+
+        JButton mediumLevel2Button = new JButton("Poziom 2");
+        mediumLevel2Button.setBounds(90, 140, 500, 100);
+        mediumLevel2Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        mediumLevel2Button.setFocusable(false);
+
+        JButton mediumLevel3Button = new JButton("Poziom 3");
+        mediumLevel3Button.setBounds(90, 250, 500, 100);
+        mediumLevel3Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        mediumLevel3Button.setFocusable(false);
+
+        JButton mediumLevel4Button = new JButton("Poziom 4");
+        mediumLevel4Button.setBounds(90, 360, 500, 100);
+        mediumLevel4Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        mediumLevel4Button.setFocusable(false);
+
+        JButton backButton = new JButton("Powrót");
+        backButton.setBounds(90, 475, 500, 100);
+        backButton.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        backButton.setFocusable(false);
+        backButton.addActionListener(e -> showLevelSelection());
+
+
+        mediumLevel1Button.addActionListener(e -> {
+            this.game = new Game(5, frame);
+            this.musicManager.stopSound();
+        });
+        mediumLevel2Button.addActionListener(e -> {
+            this.game = new Game(6, frame);
+            this.musicManager.stopSound();
+        });
+        mediumLevel3Button.addActionListener(e -> {
+            this.game = new Game(7, frame);
+            this.musicManager.stopSound();
+        });
+        mediumLevel4Button.addActionListener(e -> {
+            this.game = new Game(8, frame);
+            this.musicManager.stopSound();
+        });
+        backButton.addActionListener(e -> showLevelSelection());
+
+
+        frame.add(mediumLevel1Button);
+        frame.add(mediumLevel2Button);
+        frame.add(mediumLevel3Button);
+        frame.add(mediumLevel4Button);
+        frame.add(backButton);
+
+        frame.setVisible(true);
+        frame.revalidate();
+        frame.repaint();
+    }
+
+    public void showLevelsHard(){
+        frame.getContentPane().removeAll();
+        frame.setLayout(null);
+
+        JButton hardLevel1Button = new JButton("Poziom 1");
+        hardLevel1Button.setBounds(90, 30, 500, 100);
+        hardLevel1Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        hardLevel1Button.setFocusable(false);
+
+        JButton hardLevel2Button = new JButton("Poziom 2");
+        hardLevel2Button.setBounds(90, 140, 500, 100);
+        hardLevel2Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        hardLevel2Button.setFocusable(false);
+
+        JButton hardLevel3Button = new JButton("Poziom 3");
+        hardLevel3Button.setBounds(90, 250, 500, 100);
+        hardLevel3Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        hardLevel3Button.setFocusable(false);
+
+        JButton hardLevel4Button = new JButton("Poziom 4");
+        hardLevel4Button.setBounds(90, 360, 500, 100);
+        hardLevel4Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        hardLevel4Button.setFocusable(false);
+
+        JButton backButton = new JButton("Powrót");
+        backButton.setBounds(90, 475, 500, 100);
+        backButton.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        backButton.setFocusable(false);
+        backButton.addActionListener(e -> showLevelSelection());
+
+        hardLevel1Button.addActionListener(e -> {
+            this.game = new Game(9, frame);
+            this.musicManager.stopSound();
+        });
+        hardLevel2Button.addActionListener(e -> {
+            this.game = new Game(10, frame);
+            this.musicManager.stopSound();
+        });
+        hardLevel3Button.addActionListener(e -> {
+            this.game = new Game(11, frame);
+            this.musicManager.stopSound();
+        });
+        hardLevel4Button.addActionListener(e -> {
+            this.game = new Game(12, frame);
+            this.musicManager.stopSound();
+        });
+        backButton.addActionListener(e -> showLevelSelection());
+
+        frame.add(hardLevel1Button);
+        frame.add(hardLevel2Button);
+        frame.add(hardLevel3Button);
+        frame.add(hardLevel4Button);
+        frame.add(backButton);
+
+        frame.setVisible(true);
         frame.revalidate();
         frame.repaint();
     }

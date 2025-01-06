@@ -37,7 +37,8 @@ public class Game {
         frame.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    menus = new Menus(frame); // Initialize menus object
+                    musicManager.stopSound();
+                    musicManager.playMainMenuMusic();
                     showPauseMenu(frame, currentLevel);
                     return;
                 }
@@ -71,7 +72,8 @@ public class Game {
 
     public void restartLevel() {
         System.out.println("Restarting level: " + currentLevel);
-
+        musicManager.stopSound();
+        this.musicManager.playGameMusic();
         frame.getContentPane().removeAll();
         frame.setLayout(new BorderLayout());
 
@@ -89,6 +91,8 @@ public class Game {
     }
 
     public void continueLevel() {
+        musicManager.stopSound();
+        this.musicManager.playGameMusic();
         frame.getContentPane().removeAll();
         frame.setLayout(new BorderLayout());
         gamePanel = new GamePanel(board, player, currentLevel);
@@ -131,6 +135,8 @@ public class Game {
             restartLevel();;
         });
         returnButton.addActionListener(e -> {
+            musicManager.stopSound();
+            menus = new Menus(frame);
             menus.showLevelSelection();
         });
 

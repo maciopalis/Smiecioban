@@ -8,7 +8,7 @@ public class Main {
         frame.setSize(696, 649);
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(Color.decode("#F0F8FF"));
-        frame.setResizable(true);
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         new Menus(frame);
     }

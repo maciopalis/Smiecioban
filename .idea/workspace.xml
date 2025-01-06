@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330300c6-dccd-4deb-b2ed-03155f072ef3" name="Changes" comment="Added Music">
+    <list default="true" id="330300c6-dccd-4deb-b2ed-03155f072ef3" name="Changes" comment="Added some maps">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Levels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Levels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +135,7 @@
       <workItem from="1736084293108" duration="1159000" />
       <workItem from="1736089561763" duration="23243000" />
       <workItem from="1736120197729" duration="776000" />
-      <workItem from="1736164271130" duration="22720000" />
+      <workItem from="1736164271130" duration="25658000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <option name="closed" value="true" />
@@ -226,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736176140051</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added some maps">
+      <option name="closed" value="true" />
+      <created>1736188689879</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1736188689879</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +273,8 @@
     <MESSAGE value="Working pause menu" />
     <MESSAGE value="Added Level Completed Menu" />
     <MESSAGE value="Added Music" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Music" />
+    <MESSAGE value="Added some maps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some maps" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

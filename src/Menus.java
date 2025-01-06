@@ -4,11 +4,14 @@ import java.awt.*;
 public class Menus extends JFrame {
     public Game game;
     private JFrame frame;
+    private MusicManager musicManager;
 
     public Menus(JFrame frame) {
+        this.musicManager = new MusicManager();
         this.frame = frame;
         this.game = game;
         showMainMenu();
+        this.musicManager.playMainMenuMusic();
     }
 
     public void showMainMenu() {
@@ -62,6 +65,7 @@ public class Menus extends JFrame {
             int level = i + 1;
             JButton levelButton = new JButton(levels[i]);
             levelButton.addActionListener(e -> {
+                this.musicManager.stopSound();
                 this.game = new Game(level, frame);
                 dispose();
             });
@@ -118,12 +122,17 @@ public class Menus extends JFrame {
         frame.repaint();
     }
 
-    public void levelCompletedMenu(int currentLevel){
+    public void levelCompletedMenu(int currentLevel, int moves){
         frame.getContentPane().removeAll();
         frame.setLayout(null);
+
+        JLabel informationLabel = new JLabel("Poziom ukończony w " + moves + " ruchach!");
+        informationLabel.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        informationLabel.setBounds(90, 10, 500, 100);
+
         JLabel completedLabel = new JLabel("<html>Sterowanie:<br>W - Góra<br>A - Lewo<br>S - Dół<br>D - Prawo</html>");
-        completedLabel.setFont(new Font(("Comic Sans"), Font.BOLD, 50));
-        completedLabel.setBounds(160,45,500,300);
+        completedLabel.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
+        completedLabel.setBounds(90,45,500,300);
 
         JButton nextButton = new JButton("Dalej");
         nextButton.setBounds(90,400,500,100);
@@ -171,7 +180,7 @@ public class Menus extends JFrame {
             default:
                 completedLabel.setText("<html>Recykling to nie tylko ochrona środowiska – to także oszczędność energii i redukcja emisji CO₂.</html>");
         }
-
+        frame.add(informationLabel);
         frame.add(completedLabel);
         frame.add(nextButton);
 

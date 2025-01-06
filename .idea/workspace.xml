@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330300c6-dccd-4deb-b2ed-03155f072ef3" name="Changes" comment="Working pause menu">
+    <list default="true" id="330300c6-dccd-4deb-b2ed-03155f072ef3" name="Changes" comment="Added Level Completed Menu">
+      <change afterPath="$PROJECT_DIR$/src/MusicManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sound.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Levels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Levels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menus.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +139,7 @@
       <workItem from="1736084293108" duration="1159000" />
       <workItem from="1736089561763" duration="23243000" />
       <workItem from="1736120197729" duration="776000" />
-      <workItem from="1736164271130" duration="3913000" />
+      <workItem from="1736164271130" duration="11270000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <option name="closed" value="true" />
@@ -211,7 +213,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736117240389</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added Level Completed Menu">
+      <option name="closed" value="true" />
+      <created>1736168391965</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1736168391965</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,7 +259,8 @@
     <MESSAGE value="Working bins and trash v1" />
     <MESSAGE value="Graphic main menu" />
     <MESSAGE value="Working pause menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working pause menu" />
+    <MESSAGE value="Added Level Completed Menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Level Completed Menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -270,7 +281,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Menus.java</url>
-          <line>14</line>
+          <line>17</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>

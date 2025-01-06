@@ -11,10 +11,13 @@ public class Game {
     private JFrame frame;
     private Menus menus;
     public int currentLevel;
+    public MusicManager musicManager;
 
     public Game(int level, JFrame frame) {
+        this.musicManager = new MusicManager();
         this.frame = frame;
         this.currentLevel = level;
+        this.musicManager.playGameMusic();
         System.out.println("Level: " + currentLevel); //delete later - testing
         frame.getContentPane().removeAll();
         frame.setLayout(new BorderLayout());
@@ -27,7 +30,6 @@ public class Game {
     }
 
     private void setupKeyListener(JFrame frame) {
-
         for (KeyListener kl : frame.getKeyListeners()) {
             frame.removeKeyListener(kl);
         }
@@ -55,8 +57,10 @@ public class Game {
                 }
                 gamePanel.updateBoard(board);
                 if (board.isCompleted()) {
+                    musicManager.stopSound();
+                    int moves = gamePanel.getPlayerMoves();
                     menus = new Menus(frame);
-                    menus.levelCompletedMenu(currentLevel);
+                    menus.levelCompletedMenu(currentLevel, moves);
                 }
             }
         });

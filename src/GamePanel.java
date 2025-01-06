@@ -105,4 +105,8 @@ public class GamePanel extends JPanel {
         this.board = board;
         repaint();
     }
+
+    public int getPlayerMoves() {
+        return player.getMoves();
+    }
 }

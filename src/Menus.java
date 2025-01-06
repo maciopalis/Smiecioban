@@ -5,7 +5,6 @@ public class Menus extends JFrame {
     public Game game;
     private JFrame frame;
 
-
     public Menus(JFrame frame) {
         this.frame = frame;
         this.game = game;
@@ -119,5 +118,65 @@ public class Menus extends JFrame {
         frame.repaint();
     }
 
+    public void levelCompletedMenu(int currentLevel){
+        frame.getContentPane().removeAll();
+        frame.setLayout(null);
+        JLabel completedLabel = new JLabel("<html>Sterowanie:<br>W - Góra<br>A - Lewo<br>S - Dół<br>D - Prawo</html>");
+        completedLabel.setFont(new Font(("Comic Sans"), Font.BOLD, 50));
+        completedLabel.setBounds(160,45,500,300);
+
+        JButton nextButton = new JButton("Dalej");
+        nextButton.setBounds(90,400,500,100);
+        nextButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
+        nextButton.setFocusable(false);
+        nextButton.addActionListener(e -> showLevelSelection());
+
+        switch(currentLevel){
+            case 1:
+                completedLabel.setText("<html>Recykling pozwala ograniczyć zużycie surowców naturalnych i chroni nasze środowisko.</html>");
+                break;
+            case 2:
+                completedLabel.setText("<html>Segregując odpady, dajesz im drugie życie – szkło, plastik i papier mogą być przetwarzane wielokrotnie.</html>");
+                break;
+            case 3:
+                completedLabel.setText("<html>Recykling jednej butelki plastikowej pozwala zaoszczędzić energię potrzebną na 25 minut pracy żarówki LED.</html>");
+                break;
+            case 4:
+                completedLabel.setText("<html>Pamiętaj, że wyrzucając śmieci do odpowiednich koszy, zmniejszasz ilość odpadów trafiających na wysypiska.</html>");
+                break;
+            case 5:
+                completedLabel.setText("<html>Z każdej tony makulatury można wyprodukować aż 900 kg nowego papieru!</html>");
+                break;
+            case 6:
+                completedLabel.setText("<html>Szkło to jeden z najlepszych materiałów do recyklingu – można go przetwarzać bez końca.</html>");
+                break;
+            case 7:
+                completedLabel.setText("<html>Segregowanie bioodpadów pozwala tworzyć naturalny kompost, który może użyźniać glebę.</html>");
+                break;
+            case 8:
+                completedLabel.setText("<html>Nie wyrzucaj baterii do zwykłych koszy – zawierają toksyczne substancje, które szkodzą środowisku.</html>");
+                break;
+            case 9:
+                completedLabel.setText("<html>Plastikowe butelki mogą być przetwarzane na nowe opakowania, ubrania czy materiały budowlane.</html>");
+                break;
+            case 10:
+                completedLabel.setText("<html>Recykling metali, takich jak aluminium, pozwala zaoszczędzić aż 95% energii w porównaniu z ich produkcją od podstaw.</html>");
+                break;
+            case 11:
+                completedLabel.setText("<html>Zamiast wyrzucać, przemyśl, czy dany przedmiot można naprawić lub oddać komuś, kto go potrzebuje.</html>");
+                break;
+            case 12:
+                completedLabel.setText("<html>Segregowanie odpadów to prosty sposób, by chronić planetę dla przyszłych pokoleń.</html>");
+                break;
+            default:
+                completedLabel.setText("<html>Recykling to nie tylko ochrona środowiska – to także oszczędność energii i redukcja emisji CO₂.</html>");
+        }
+
+        frame.add(completedLabel);
+        frame.add(nextButton);
+
+        frame.revalidate();
+        frame.repaint();
+    }
 
 }

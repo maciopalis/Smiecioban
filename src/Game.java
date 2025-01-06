@@ -52,19 +52,18 @@ public class Game {
                     case 'd':
                         player.move('d');
                         break;
-                    case 'r':
-                        player.move('w');
-                        break;
                 }
                 gamePanel.updateBoard(board);
                 if (board.isCompleted()) {
-                    JOptionPane.showMessageDialog(null, "You won!");
-                    System.exit(0);
+                    menus = new Menus(frame);
+                    menus.levelCompletedMenu(currentLevel);
                 }
             }
         });
         frame.requestFocusInWindow();
     }
+
+
 
     public void restartLevel() {
         System.out.println("Restarting level: " + currentLevel);

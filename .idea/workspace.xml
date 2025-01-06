@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330300c6-dccd-4deb-b2ed-03155f072ef3" name="Changes" comment="Added all the maps">
+    <list default="true" id="330300c6-dccd-4deb-b2ed-03155f072ef3" name="Changes" comment="Fixed music bug">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Levels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Levels.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +139,7 @@
       <workItem from="1736084293108" duration="1159000" />
       <workItem from="1736089561763" duration="23243000" />
       <workItem from="1736120197729" duration="776000" />
-      <workItem from="1736164271130" duration="25969000" />
+      <workItem from="1736164271130" duration="28789000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <option name="closed" value="true" />
@@ -240,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736191563292</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed music bug">
+      <option name="closed" value="true" />
+      <created>1736192454711</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1736192454711</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,7 +295,8 @@
     <MESSAGE value="Added Music" />
     <MESSAGE value="Added some maps" />
     <MESSAGE value="Added all the maps" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added all the maps" />
+    <MESSAGE value="Fixed music bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed music bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -291,16 +305,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Board.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Menus.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>

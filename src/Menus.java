@@ -9,7 +9,6 @@ public class Menus extends JFrame {
     public Menus(JFrame frame) {
         this.musicManager = new MusicManager();
         this.frame = frame;
-        this.game = game;
         showMainMenu();
         this.musicManager.playMainMenuMusic();
     }
@@ -20,26 +19,15 @@ public class Menus extends JFrame {
 
         ImageIcon radek = new ImageIcon(new ImageIcon("graphics/garbageman/radek_menu.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
         JLabel titleLabel = new JLabel("Śmiecioban");
-        titleLabel.setFont(new Font(("Comic Sans MS"), Font.BOLD, 50));
-        titleLabel.setBounds(160,45,500,100);
+        titleLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
+        titleLabel.setBounds(160, 45, 500, 100);
         titleLabel.setIcon(radek);
         titleLabel.setIconTextGap(20);
         titleLabel.setHorizontalTextPosition(SwingConstants.LEFT);
 
-        JButton levelButton = new JButton("Wybierz poziom");
-        levelButton.setBounds(90,150,500,100);
-        levelButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        levelButton.setFocusable(false);
-
-        JButton controlsButton = new JButton("Sterowanie");
-        controlsButton.setBounds(90,275,500,100);
-        controlsButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        controlsButton.setFocusable(false);
-
-        JButton informationButton = new JButton("Informacje");
-        informationButton.setBounds(90,400,500,100);
-        informationButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        informationButton.setFocusable(false);
+        JButton levelButton = createButton("Wybierz poziom", 150);
+        JButton controlsButton = createButton("Sterowanie", 275);
+        JButton informationButton = createButton("Informacje", 400);
 
         levelButton.addActionListener(e -> showLevelSelection());
         controlsButton.addActionListener(e -> showControls());
@@ -50,104 +38,59 @@ public class Menus extends JFrame {
         frame.add(controlsButton);
         frame.add(informationButton);
 
-        //pack();
         frame.setVisible(true);
         frame.revalidate();
         frame.repaint();
+    }
+
+    private JButton createButton(String text, int yPosition) {
+        JButton button = new JButton(text);
+        button.setBounds(90, yPosition, 500, 100);
+        button.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        button.setFocusable(false);
+        return button;
     }
 
     public void showLevelSelection() {
         frame.getContentPane().removeAll();
         frame.setLayout(null);
 
-        JButton easyLevelButton = new JButton("Łatwy");
-        easyLevelButton.setBounds(90,50,500,100);
-        easyLevelButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        easyLevelButton.setFocusable(false);
+        JButton easyLevelButton = createButton("Łatwy", 50);
+        JButton mediumLevelButton = createButton("Średni", 170);
+        JButton hardLevelButton = createButton("Trudny", 290);
+        JButton backButton = createButton("Powrót", 440);
 
-        JButton mediumLevelButton = new JButton("Średni");
-        mediumLevelButton.setBounds(90,170,500,100);
-        mediumLevelButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        mediumLevelButton.setFocusable(false);
-
-        JButton hardLevelButton = new JButton("Trundny");
-        hardLevelButton.setBounds(90,290,500,100);
-        hardLevelButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        hardLevelButton.setFocusable(false);
-
-        JButton backButton = new JButton("Powrót");
-        backButton.setBounds(90,440,500,100);
-        backButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        backButton.setFocusable(false);
-        backButton.addActionListener(e -> showMainMenu());
-
-        easyLevelButton.addActionListener(e -> showLevelsEasy());
-        mediumLevelButton.addActionListener(e -> showLevelsMedium());
-        hardLevelButton.addActionListener(e -> showLevelsHard());
+        easyLevelButton.addActionListener(e -> showLevels("easy"));
+        mediumLevelButton.addActionListener(e -> showLevels("medium"));
+        hardLevelButton.addActionListener(e -> showLevels("hard"));
         backButton.addActionListener(e -> showMainMenu());
 
         frame.add(easyLevelButton);
         frame.add(mediumLevelButton);
         frame.add(hardLevelButton);
         frame.add(backButton);
-        //pack();
+
         frame.setVisible(true);
         frame.revalidate();
         frame.repaint();
     }
 
-    public void showLevelsEasy(){
+    private void showLevels(String difficulty) {
         frame.getContentPane().removeAll();
         frame.setLayout(null);
 
-        JButton easyLevel1Button = new JButton("Poziom 1");
-        easyLevel1Button.setBounds(90,30,500,100);
-        easyLevel1Button.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        easyLevel1Button.setFocusable(false);
+        for (int i = 1; i <= 4; i++) {
+            JButton levelButton = createButton("Poziom " + i, 30 + (i - 1) * 110);
+            int level = getLevel(difficulty, i);
+            levelButton.addActionListener(e -> {
+                this.game = new Game(level, frame);
+                this.musicManager.stopSound();
+            });
+            frame.add(levelButton);
+        }
 
-        JButton easyLevel2Button = new JButton("Poziom 2");
-        easyLevel2Button.setBounds(90,140,500,100);
-        easyLevel2Button.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        easyLevel2Button.setFocusable(false);
-
-        JButton easyLevel3Button = new JButton("Poziom 3");
-        easyLevel3Button.setBounds(90,250,500,100);
-        easyLevel3Button.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        easyLevel3Button.setFocusable(false);
-
-        JButton easyLevel4Button = new JButton("Poziom 4");
-        easyLevel4Button.setBounds(90,360,500,100);
-        easyLevel4Button.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        easyLevel4Button.setFocusable(false);
-
-        JButton backButton = new JButton("Powrót");
-        backButton.setBounds(90,475,500,100);
-        backButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        backButton.setFocusable(false);
-        backButton.addActionListener(e -> showMainMenu());
-
-        easyLevel1Button.addActionListener(e -> {
-            this.game = new Game(1, frame);
-            this.musicManager.stopSound();
-        });
-        easyLevel2Button.addActionListener(e -> {
-            this.game = new Game(2, frame);
-            this.musicManager.stopSound();
-        });
-        easyLevel3Button.addActionListener(e -> {
-            this.game = new Game(3, frame);
-            this.musicManager.stopSound();
-        });
-        easyLevel4Button.addActionListener(e -> {
-            this.game = new Game(4, frame);
-            this.musicManager.stopSound();
-        });
-        backButton.addActionListener(e -> showMainMenu());
-
-        frame.add(easyLevel1Button);
-        frame.add(easyLevel2Button);
-        frame.add(easyLevel3Button);
-        frame.add(easyLevel4Button);
+        JButton backButton = createButton("Powrót", 475);
+        backButton.addActionListener(e -> showLevelSelection());
         frame.add(backButton);
 
         frame.setVisible(true);
@@ -155,124 +98,17 @@ public class Menus extends JFrame {
         frame.repaint();
     }
 
-    public void showLevelsMedium(){
-        frame.getContentPane().removeAll();
-        frame.setLayout(null);
-
-        JButton mediumLevel1Button = new JButton("Poziom 1");
-        mediumLevel1Button.setBounds(90, 30, 500, 100);
-        mediumLevel1Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
-        mediumLevel1Button.setFocusable(false);
-
-        JButton mediumLevel2Button = new JButton("Poziom 2");
-        mediumLevel2Button.setBounds(90, 140, 500, 100);
-        mediumLevel2Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
-        mediumLevel2Button.setFocusable(false);
-
-        JButton mediumLevel3Button = new JButton("Poziom 3");
-        mediumLevel3Button.setBounds(90, 250, 500, 100);
-        mediumLevel3Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
-        mediumLevel3Button.setFocusable(false);
-
-        JButton mediumLevel4Button = new JButton("Poziom 4");
-        mediumLevel4Button.setBounds(90, 360, 500, 100);
-        mediumLevel4Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
-        mediumLevel4Button.setFocusable(false);
-
-        JButton backButton = new JButton("Powrót");
-        backButton.setBounds(90, 475, 500, 100);
-        backButton.setFont(new Font("Comic Sans", Font.BOLD, 30));
-        backButton.setFocusable(false);
-        backButton.addActionListener(e -> showLevelSelection());
-
-
-        mediumLevel1Button.addActionListener(e -> {
-            this.game = new Game(5, frame);
-            this.musicManager.stopSound();
-        });
-        mediumLevel2Button.addActionListener(e -> {
-            this.game = new Game(6, frame);
-            this.musicManager.stopSound();
-        });
-        mediumLevel3Button.addActionListener(e -> {
-            this.game = new Game(7, frame);
-            this.musicManager.stopSound();
-        });
-        mediumLevel4Button.addActionListener(e -> {
-            this.game = new Game(8, frame);
-            this.musicManager.stopSound();
-        });
-        backButton.addActionListener(e -> showLevelSelection());
-
-
-        frame.add(mediumLevel1Button);
-        frame.add(mediumLevel2Button);
-        frame.add(mediumLevel3Button);
-        frame.add(mediumLevel4Button);
-        frame.add(backButton);
-
-        frame.setVisible(true);
-        frame.revalidate();
-        frame.repaint();
-    }
-
-    public void showLevelsHard(){
-        frame.getContentPane().removeAll();
-        frame.setLayout(null);
-
-        JButton hardLevel1Button = new JButton("Poziom 1");
-        hardLevel1Button.setBounds(90, 30, 500, 100);
-        hardLevel1Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
-        hardLevel1Button.setFocusable(false);
-
-        JButton hardLevel2Button = new JButton("Poziom 2");
-        hardLevel2Button.setBounds(90, 140, 500, 100);
-        hardLevel2Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
-        hardLevel2Button.setFocusable(false);
-
-        JButton hardLevel3Button = new JButton("Poziom 3");
-        hardLevel3Button.setBounds(90, 250, 500, 100);
-        hardLevel3Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
-        hardLevel3Button.setFocusable(false);
-
-        JButton hardLevel4Button = new JButton("Poziom 4");
-        hardLevel4Button.setBounds(90, 360, 500, 100);
-        hardLevel4Button.setFont(new Font("Comic Sans", Font.BOLD, 30));
-        hardLevel4Button.setFocusable(false);
-
-        JButton backButton = new JButton("Powrót");
-        backButton.setBounds(90, 475, 500, 100);
-        backButton.setFont(new Font("Comic Sans", Font.BOLD, 30));
-        backButton.setFocusable(false);
-        backButton.addActionListener(e -> showLevelSelection());
-
-        hardLevel1Button.addActionListener(e -> {
-            this.game = new Game(9, frame);
-            this.musicManager.stopSound();
-        });
-        hardLevel2Button.addActionListener(e -> {
-            this.game = new Game(10, frame);
-            this.musicManager.stopSound();
-        });
-        hardLevel3Button.addActionListener(e -> {
-            this.game = new Game(11, frame);
-            this.musicManager.stopSound();
-        });
-        hardLevel4Button.addActionListener(e -> {
-            this.game = new Game(12, frame);
-            this.musicManager.stopSound();
-        });
-        backButton.addActionListener(e -> showLevelSelection());
-
-        frame.add(hardLevel1Button);
-        frame.add(hardLevel2Button);
-        frame.add(hardLevel3Button);
-        frame.add(hardLevel4Button);
-        frame.add(backButton);
-
-        frame.setVisible(true);
-        frame.revalidate();
-        frame.repaint();
+    private int getLevel(String difficulty, int level) {
+        switch (difficulty) {
+            case "easy":
+                return level;
+            case "medium":
+                return level + 4;
+            case "hard":
+                return level + 8;
+            default:
+                throw new IllegalArgumentException("Invalid difficulty: " + difficulty);
+        }
     }
 
     private void showControls() {

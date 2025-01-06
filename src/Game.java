@@ -18,7 +18,6 @@ public class Game {
         this.frame = frame;
         this.currentLevel = level;
         this.musicManager.playGameMusic();
-        System.out.println("Level: " + currentLevel); //delete later - testing
         frame.getContentPane().removeAll();
         frame.setLayout(new BorderLayout());
         board = new Board(currentLevel);
@@ -113,27 +112,12 @@ public class Game {
         titleLabel.setIconTextGap(20);
         titleLabel.setHorizontalTextPosition(SwingConstants.LEFT);
 
-        JButton continueButton = new JButton("Kontynuuj");
-        continueButton.setBounds(90,150,500,100);
-        continueButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        continueButton.setFocusable(false);
+        JButton continueButton = createButton("Kontynuuj", 90, 150, 500, 100, 30);
+        JButton restartButton = createButton("Zacznij od nowa", 90, 275, 500, 100, 30);
+        JButton returnButton = createButton("Powrót do wyboru poziomu", 90, 400, 500, 100, 30);
 
-        JButton restartButton = new JButton("Zacznij od nowa");
-        restartButton.setBounds(90,275,500,100);
-        restartButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        restartButton.setFocusable(false);
-
-        JButton returnButton = new JButton("Powrót do wyboru poziomu");
-        returnButton.setBounds(90,400,500,100);
-        returnButton.setFont(new Font(("Comic Sans"), Font.BOLD, 30));
-        returnButton.setFocusable(false);
-
-        continueButton.addActionListener(e -> {
-            continueLevel();
-        });
-        restartButton.addActionListener(e -> {
-            restartLevel();;
-        });
+        continueButton.addActionListener(e -> continueLevel());
+        restartButton.addActionListener(e -> restartLevel());
         returnButton.addActionListener(e -> {
             for (KeyListener kl : frame.getKeyListeners()) {
                 frame.removeKeyListener(kl);
@@ -143,7 +127,6 @@ public class Game {
             menus.showLevelSelection();
         });
 
-
         frame.add(titleLabel);
         frame.add(continueButton);
         frame.add(restartButton);
@@ -152,5 +135,13 @@ public class Game {
         frame.setVisible(true);
         frame.revalidate();
         frame.repaint();
+    }
+
+    private JButton createButton(String text, int x, int y, int width, int height, int fontSize) {
+        JButton button = new JButton(text);
+        button.setBounds(x, y, width, height);
+        button.setFont(new Font("Comic Sans", Font.BOLD, fontSize));
+        button.setFocusable(false);
+        return button;
     }
 }

@@ -7,7 +7,6 @@ import javax.imageio.ImageIO;
 public class GamePanel extends JPanel {
     private Board board;
     private Player player;
-    private int level;
     private Image emptyTile, wallTile, playerTile, mixedTrashTile, mixedBinTile, mixedTrashInBinTile,
             glassTrashTile, glassBinTile, glassTrashInBinTile, plasticTrashTile, plasticBinTile, plasticTrashInBinTile,
             paperTrashTile, paperBinTile, paperTrashInBinTile, bioTrashTile, bioBinTile, bioTrashInBinTile;
@@ -15,7 +14,6 @@ public class GamePanel extends JPanel {
     public GamePanel(Board board, Player player, int level) {
         this.board = board;
         this.player = player;
-        this.level = level;
         setLayout(new BorderLayout());
 
         try {
@@ -68,7 +66,6 @@ public class GamePanel extends JPanel {
     }
 
     private void drawBoard(Graphics g) {
-        super.paintComponent(g); // Clear the panel before drawing the new board - delete not working
         int tileSize = 40; // Adjusted to size of future textures
         for (int y = 0; y < board.board.length; y++) {
             for (int x = 0; x < board.board[y].length; x++) {

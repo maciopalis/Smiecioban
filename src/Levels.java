@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Levels {
     private static final char[][] level1e, level2e, level3e, level4e, level1m, level2m, level3m, level4m, level1h, level2h, level3h, level4h;
     public static char[][] currentLevel;

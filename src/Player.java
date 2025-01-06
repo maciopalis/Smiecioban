@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Player {
     private Board board;
     private int x, y;
@@ -12,9 +10,9 @@ public class Player {
         this.moves = 0;
     }
 
-    public void move(char direction) {
+    public void move(char direction) {// Player movement
         int newX = x, newY = y;
-        switch (direction) { // Player movement
+        switch (direction) {
             case 'w':
                 newY = y - 1;
                 break;
@@ -37,8 +35,6 @@ public class Player {
                 y = newY;
                 board.updatePlayerPosition(x, y);
                 moves++;
-            } else if (!board.canMove(newX, newY)) {//delete this line later
-                System.out.println("Invalid move!");
             }
         }
 

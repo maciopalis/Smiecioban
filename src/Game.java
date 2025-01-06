@@ -135,6 +135,9 @@ public class Game {
             restartLevel();;
         });
         returnButton.addActionListener(e -> {
+            for (KeyListener kl : frame.getKeyListeners()) {
+                frame.removeKeyListener(kl);
+            }
             musicManager.stopSound();
             menus = new Menus(frame);
             menus.showLevelSelection();
